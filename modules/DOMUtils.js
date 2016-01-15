@@ -57,7 +57,10 @@ export function supportsHistory() {
   // FIXME: Work around our browser history not working correctly on Chrome
   // iOS: https://github.com/rackt/react-router/issues/2565
   if (ua.indexOf('CriOS') !== -1) {
-    return false
+    // Yeah, doesn't work correctly, but we'd still rather if the whole page
+    // didn't reload whenever we use the history package to change the url.
+    //
+    // return false
   }
   return window.history && 'pushState' in window.history
 }
